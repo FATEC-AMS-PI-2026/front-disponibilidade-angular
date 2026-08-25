@@ -1,0 +1,22 @@
+:host {
+  display: block;
+
+  min-height: 100vh;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  background: #eeeeee;
+}
+
+
+.sidebar {
+  width: 187px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}

@@ -1,11 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { PrazoAlteracao } from './prazo-alteracao/prazo-alteracao';
+import { ResumoGrade } from './resumo-grade/resumo-grade';
+import { Aviso } from './aviso/aviso';
 
 @Component({
   selector: 'app-root',
-  standalone: false,
-  styleUrl: './app.css',
+
+  imports: [
+    PrazoAlteracao,
+    ResumoGrade,
+    Aviso
+  ],
+
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('front-avaliability-angular');
+
 }
