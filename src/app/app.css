@@ -1,7 +1,22 @@
 :host {
   display: block;
-  padding: 40px;
-  background: #f5f5f5;
+
   min-height: 100vh;
+
+  padding: 40px;
+
   box-sizing: border-box;
+
+  background: #eeeeee;
+}
+
+
+.sidebar {
+  width: 187px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
 }

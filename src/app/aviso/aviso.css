@@ -1,0 +1,52 @@
+.notice-card {
+  width: 187px;
+  min-height: 167px;
+
+  background: #ffffff;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.28);
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Cabeçalho */
+
+.notice-header {
+  height: 39px;
+
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  background: #006878;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* Texto */
+
+.notice-content {
+  padding: 10px 13px;
+
+  box-sizing: border-box;
+
+  color: #666666;
+
+  font-size: 13px;
+
+  line-height: 1.27;
+
+  text-align: justify;
+}
