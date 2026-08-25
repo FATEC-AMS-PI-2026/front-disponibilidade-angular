@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { GradeSidebar } from './grade-sidebar/grade-sidebar';
 
 @Component({
   selector: 'app-root',
-  standalone: false,
-  styleUrl: './app.css',
+  imports: [RouterOutlet, GradeSidebar],
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('front-avaliability-angular');
+  protected readonly title = signal('Disponibility');
 }

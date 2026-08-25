@@ -6,19 +6,9 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "front-avaliability-angular": {
+    "Disponibility": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -66,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "front-avaliability-angular:build:production"
+              "buildTarget": "Disponibility:build:production"
             },
             "development": {
-              "buildTarget": "front-avaliability-angular:build:development"
+              "buildTarget": "Disponibility:build:development"
             }
           },
           "defaultConfiguration": "development"
