@@ -1,0 +1,134 @@
+.summary-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 4px;
+
+  overflow: hidden;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* TÍTULO */
+
+.card-title {
+  height: 29px;
+
+  padding: 0 8px;
+
+  display: flex;
+  align-items: center;
+
+  background: #006878;
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* CONTEÚDO */
+
+.summary-content {
+  padding: 8px;
+}
+
+
+/* LABEL */
+
+.label {
+  display: block;
+
+  color: #777777;
+
+  font-size: 7px;
+}
+
+
+/* TOTAL */
+
+.main-value {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #006878;
+
+  font-size: 21px;
+
+  line-height: 1;
+}
+
+.main-value small {
+  font-size: 10px;
+}
+
+
+/* SEMANAL */
+
+.weekly {
+  margin-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+}
+
+.weekly span {
+  color: #888888;
+
+  font-size: 6px;
+}
+
+.weekly strong {
+  color: #006878;
+
+  font-size: 18px;
+}
+
+.weekly strong small {
+  font-size: 10px;
+}
+
+
+/* MENSAL */
+
+.monthly {
+  margin-top: 10px;
+}
+
+.monthly > span {
+  color: #888888;
+
+  font-size: 6px;
+}
+
+
+/* BARRA */
+
+.progress {
+  width: 100%;
+  height: 7px;
+
+  margin-top: 5px;
+
+  background: #dddddd;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.progress-value {
+  width: 65%;
+  height: 100%;
+
+  background: #006878;
+
+  border-radius: 10px;
+}

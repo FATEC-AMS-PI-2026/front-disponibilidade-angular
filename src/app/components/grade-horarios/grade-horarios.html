@@ -1,0 +1,211 @@
+<section class="schedule-card">
+
+
+  <!-- ========================= -->
+  <!-- BARRA SUPERIOR -->
+  <!-- ========================= -->
+
+  <div class="toolbar">
+
+
+    <!-- BOTÃO EDITAR -->
+
+    <button class="edit-button">
+
+      <span>
+        EDITAR
+      </span>
+
+      <img
+        src="imagens/Edit.svg"
+        alt="Editar"
+        class="edit-icon"
+      >
+
+    </button>
+
+
+    <!-- SELETORES -->
+
+    <div class="selects">
+
+
+      <!-- PERÍODO -->
+
+      <button class="period-button">
+
+        <span>
+          PERÍODO - AMS
+        </span>
+
+        <span>
+          ▾
+        </span>
+
+      </button>
+
+
+      <!-- PROFESSOR -->
+
+      <button class="teacher-button">
+
+        <span>
+          176 - FATEC DOM AMAURY CASTANHO
+        </span>
+
+        <span>
+          ▾
+        </span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ========================= -->
+  <!-- LEGENDA -->
+  <!-- ========================= -->
+
+  <div class="legend">
+
+
+    <span>
+
+      <i class="legend-square available"></i>
+
+      DISPONÍVEL
+
+    </span>
+
+
+    <span>
+
+      <i class="legend-square warning"></i>
+
+      DISPONÍVEL COM RESSALVA
+
+    </span>
+
+
+    <span>
+
+      <i class="legend-square unavailable"></i>
+
+      INDISPONÍVEL
+
+    </span>
+
+
+    <span class="semester">
+
+      Semestre 2026.2
+
+    </span>
+
+  </div>
+
+
+
+  <!-- ========================= -->
+  <!-- GRADE -->
+  <!-- ========================= -->
+
+  <div class="schedule-grid">
+
+
+    <!-- CABEÇALHO -->
+
+    <div class="time-header">
+
+      Horário
+
+    </div>
+
+
+    <div
+      class="day-header"
+      *ngFor="let dia of dias"
+    >
+
+      {{ dia }}
+
+    </div>
+
+
+
+    <!-- LINHAS -->
+
+    <ng-container
+      *ngFor="let linha of horarios"
+    >
+
+
+      <!-- HORÁRIO -->
+
+      <div class="time-cell">
+
+        {{ linha.horario }}
+
+      </div>
+
+
+      <!-- CÉLULAS -->
+
+      <div
+        *ngFor="let celula of linha.celulas"
+
+        class="schedule-cell"
+
+        [class.disponivel]="
+          celula.status === 'disponivel'
+        "
+
+        [class.indisponivel]="
+          celula.status === 'indisponivel'
+        "
+
+        [class.ressalva]="
+          celula.status === 'ressalva'
+        "
+
+        (click)="alterarStatus(celula)"
+      >
+
+
+        <span
+          *ngIf="
+            celula.status === 'disponivel'
+          "
+        >
+          Disponível
+        </span>
+
+
+        <span
+          *ngIf="
+            celula.status === 'indisponivel'
+          "
+        >
+          Indisponível
+        </span>
+
+
+        <span
+          *ngIf="
+            celula.status === 'ressalva'
+          "
+        >
+          Negociável
+        </span>
+
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</section>
