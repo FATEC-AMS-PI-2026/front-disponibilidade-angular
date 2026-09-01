@@ -1,0 +1,44 @@
+.warning-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 4px;
+
+  overflow: hidden;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* TÍTULO */
+
+.card-title {
+  height: 29px;
+
+  padding: 0 8px;
+
+  display: flex;
+  align-items: center;
+
+  background: #006878;
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* TEXTO */
+
+.warning-content {
+  padding: 8px;
+
+  color: #666666;
+
+  font-size: 7px;
+
+  line-height: 1.25;
+}

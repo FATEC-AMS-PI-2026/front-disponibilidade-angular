@@ -1,0 +1,379 @@
+.schedule-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-left: 4px solid #006878;
+
+  border-radius: 5px;
+
+  padding: 8px;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ================================= */
+/* TOOLBAR */
+/* ================================= */
+
+.toolbar {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 7px;
+}
+
+
+/* BOTÃO EDITAR */
+
+.edit-button {
+  height: 22px;
+
+  padding: 0 8px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  background: #006878;
+
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.edit-icon {
+  width: 12px;
+  height: 12px;
+
+  object-fit: contain;
+}
+
+
+/* SELETORES */
+
+.selects {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.selects button {
+  height: 25px;
+
+  padding: 0 7px;
+
+  border: 2px solid #006878;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  color: #006878;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.period-button {
+  min-width: 88px;
+}
+
+.teacher-button {
+  min-width: 205px;
+}
+
+
+/* ================================= */
+/* LEGENDA */
+/* ================================= */
+
+.legend {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 5px 3px 7px;
+
+  font-size: 7px;
+
+  color: #555555;
+}
+
+.legend span {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+}
+
+
+/* QUADRADOS DA LEGENDA */
+
+.legend-square {
+  width: 9px;
+  height: 9px;
+
+  display: inline-block;
+
+  border-radius: 2px;
+}
+
+
+/* DISPONÍVEL */
+
+.legend-square.available {
+  background: #686868;
+}
+
+
+/* RESSALVA */
+
+.legend-square.warning {
+  background: #be8d0a;
+}
+
+
+/* INDISPONÍVEL */
+
+.legend-square.unavailable {
+  background: #ffffff;
+
+  border: 1px solid #999999;
+}
+
+
+/* SEMESTRE */
+
+.semester {
+  margin-left: auto;
+
+  color: #777777;
+}
+
+
+/* ================================= */
+/* GRADE */
+/* ================================= */
+
+.schedule-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    52px
+    repeat(6, minmax(65px, 1fr));
+
+  gap: 4px;
+}
+
+
+/* CABEÇALHO HORÁRIO */
+
+.time-header {
+  height: 47px;
+
+  background: #dddddd;
+
+  border-radius: 5px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #555555;
+
+  font-size: 7px;
+
+  font-weight: 600;
+}
+
+
+/* DIAS */
+
+.day-header {
+  height: 47px;
+
+  background: #dddddd;
+
+  border-radius: 5px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #555555;
+
+  font-size: 7px;
+
+  font-weight: 500;
+}
+
+
+/* HORÁRIOS */
+
+.time-cell {
+  height: 47px;
+
+  background: #dddddd;
+
+  border-radius: 5px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #555555;
+
+  font-size: 7px;
+
+  font-weight: 600;
+}
+
+
+/* ================================= */
+/* CÉLULAS */
+/* ================================= */
+
+.schedule-cell {
+  height: 47px;
+
+  border-radius: 5px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 3px;
+
+  font-size: 6px;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+}
+
+
+/* INDISPONÍVEL */
+
+.schedule-cell.indisponivel {
+  background: #eeeeee;
+
+  color: #444444;
+}
+
+
+/* DISPONÍVEL */
+
+.schedule-cell.disponivel {
+  background: #686868;
+
+  color: #ffffff;
+}
+
+
+/* RESSALVA */
+
+.schedule-cell.ressalva {
+  background: #be8d0a;
+
+  color: #ffffff;
+}
+
+
+/* HOVER */
+
+.schedule-cell:hover {
+  transform: scale(0.97);
+
+  filter: brightness(0.95);
+}
+
+
+/* ================================= */
+/* RESPONSIVO */
+/* ================================= */
+
+@media (max-width: 850px) {
+
+  .toolbar {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 6px;
+  }
+
+  .selects {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .schedule-card {
+    overflow-x: auto;
+  }
+
+  .schedule-grid {
+    min-width: 570px;
+  }
+
+  .legend {
+    min-width: 570px;
+  }
+
+}
