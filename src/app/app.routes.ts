@@ -8,6 +8,7 @@ import { ProfessorLogin } from './features/access/pages/professor-login/professo
 
 import { ProfessorHome } from './features/professor/pages/professor-home/professor-home';
 import { ProfessorProfile } from './features/professor/pages/professor-profile/professor-profile';
+import { ProfessorAvailability } from './features/professor/pages/professor-availability/professor-availability';
 
 export const routes: Routes = [
   {
@@ -23,7 +24,7 @@ export const routes: Routes = [
         component: ProfessorLogin,
       },
       {
-        path: 'login/coordenador',
+        path: 'login/coordinator',
         component: CoordinatorLogin,
       },
     ],
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {
     path: 'professor/profile',
     component: ProfessorProfile,
+  },
+  {
+    path: 'professor/availability',
+    component: ProfessorAvailability,
   },
 
   {

@@ -115,16 +115,4 @@ export class ProfessorProfile {
         schedule.row === row,
     );
   }
-
-  accessAsProfile(): void {
-    // TODO: navegar para perfil
-  }
-
-  accessAvailability(): void {
-    // TODO: navegar para disponibilidade
-  }
-
-  logout(): void {
-    // TODO: implementar logout
-  }
 }

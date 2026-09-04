@@ -2,8 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
-  output,
 } from '@angular/core';
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
 
 import {
   LucideCalendarDays,
@@ -11,11 +14,14 @@ import {
   LucideUserRound,
 } from '@lucide/angular';
 
-export type ProfessorNavItem = 'perfil' | 'disponibilidade';
+export type ProfessorNavItem =
+  | 'profile'
+  | 'availability';
 
 @Component({
   selector: 'app-professor-navbar',
   imports: [
+    RouterLink,
     LucideCalendarDays,
     LucideLogOut,
     LucideUserRound,
@@ -24,9 +30,14 @@ export type ProfessorNavItem = 'perfil' | 'disponibilidade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfessorNavbar {
-  readonly activeItem = input<ProfessorNavItem>('perfil');
+  readonly activeItem =
+    input<ProfessorNavItem>('profile');
 
-  readonly profileClick = output<void>();
-  readonly availabilityClick = output<void>();
-  readonly logoutClick = output<void>();
+  constructor(
+    private readonly router: Router,
+  ) { }
+
+  logout(): void {
+    this.router.navigate(['/']);
+  }
 }

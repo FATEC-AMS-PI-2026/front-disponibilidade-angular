@@ -1,49 +1,49 @@
 <aside class="flex h-full w-[208px] shrink-0 flex-col border-r border-slate-300 bg-white shadow-md">
-  <!-- IDENTIDADE -->
+  <!-- BRAND -->
   <div class="flex h-[130px] shrink-0 flex-col justify-center px-4">
     <img src="/assets/images/cps/logo_cps_versao_cor.png" alt="Centro Paula Souza"
       class="h-auto w-[76px] object-contain" />
 
     <span class="mt-3 text-[11px] font-bold uppercase text-slate-600">
-      Central do professor
+      Professor Center
     </span>
   </div>
 
-  <!-- NAVEGAÇÃO -->
-  <nav class="flex flex-col" aria-label="Navegação do professor">
-    <button type="button"
-      class="flex h-10 w-full items-center justify-between border-r-4 px-4 text-left text-sm transition-colors"
-      [class.border-red-600]="activeItem() === 'perfil'" [class.bg-slate-200]="activeItem() === 'perfil'"
-      [class.font-bold]="activeItem() === 'perfil'" [class.text-red-700]="activeItem() === 'perfil'"
-      [class.border-transparent]="activeItem() !== 'perfil'" [class.text-slate-600]="activeItem() !== 'perfil'"
-      [class.hover:bg-slate-100]="activeItem() !== 'perfil'" [class.hover:text-slate-800]="activeItem() !== 'perfil'"
-      (click)="profileClick.emit()">
-      <span>Perfil</span>
+  <!-- NAVIGATION -->
+  <nav class="flex flex-col" aria-label="Professor navigation">
+    <!-- PROFILE -->
+    <a routerLink="/professor/profile"
+      class="flex h-10 items-center justify-between border-r-4 px-4 text-sm transition-colors"
+      [class.border-red-600]="activeItem() === 'profile'" [class.bg-slate-200]="activeItem() === 'profile'"
+      [class.font-bold]="activeItem() === 'profile'" [class.text-red-700]="activeItem() === 'profile'"
+      [class.border-transparent]="activeItem() !== 'profile'" [class.text-slate-600]="activeItem() !== 'profile'"
+      [class.hover:bg-slate-100]="activeItem() !== 'profile'" [class.hover:text-slate-800]="activeItem() !== 'profile'">
+      <span>Profile</span>
 
       <svg lucideUserRound [size]="17" [strokeWidth]="2" aria-hidden="true"></svg>
-    </button>
+    </a>
 
-    <button type="button"
-      class="flex h-10 w-full items-center justify-between border-r-4 px-4 text-left text-sm transition-colors"
-      [class.border-red-600]="activeItem() === 'disponibilidade'"
-      [class.bg-slate-200]="activeItem() === 'disponibilidade'" [class.font-bold]="activeItem() === 'disponibilidade'"
-      [class.text-red-700]="activeItem() === 'disponibilidade'"
-      [class.border-transparent]="activeItem() !== 'disponibilidade'"
-      [class.text-slate-600]="activeItem() !== 'disponibilidade'"
-      [class.hover:bg-slate-100]="activeItem() !== 'disponibilidade'"
-      [class.hover:text-slate-800]="activeItem() !== 'disponibilidade'" (click)="availabilityClick.emit()">
-      <span>Disponibilidade</span>
+    <!-- AVAILABILITY -->
+    <a routerLink="/professor/availability"
+      class="flex h-10 items-center justify-between border-r-4 px-4 text-sm transition-colors"
+      [class.border-red-600]="activeItem() === 'availability'" [class.bg-slate-200]="activeItem() === 'availability'"
+      [class.font-bold]="activeItem() === 'availability'" [class.text-red-700]="activeItem() === 'availability'"
+      [class.border-transparent]="activeItem() !== 'availability'"
+      [class.text-slate-600]="activeItem() !== 'availability'"
+      [class.hover:bg-slate-100]="activeItem() !== 'availability'"
+      [class.hover:text-slate-800]="activeItem() !== 'availability'">
+      <span>Availability</span>
 
       <svg lucideCalendarDays [size]="17" [strokeWidth]="1.8" aria-hidden="true"></svg>
-    </button>
+    </a>
   </nav>
 
-  <!-- AÇÕES -->
+  <!-- FOOTER -->
   <div class="mt-auto">
     <button type="button"
       class="flex h-10 w-full items-center justify-between px-4 text-left text-sm text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-800"
-      (click)="logoutClick.emit()">
-      <span>Sair</span>
+      (click)="logout()">
+      <span>Logout</span>
 
       <svg lucideLogOut [size]="17" [strokeWidth]="1.8" aria-hidden="true"></svg>
     </button>

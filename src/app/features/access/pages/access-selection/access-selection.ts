@@ -22,6 +22,6 @@ export class AccessSelection {
   }
 
   protected accessAsCoordinator(): void {
-    this.router.navigate(['/login/coordenador']);
+    this.router.navigate(['/login/coordinator']);
   }
 }

@@ -1,0 +1,323 @@
+<div class="h-dvh overflow-hidden bg-slate-200 text-slate-700">
+  <div class="flex h-full min-h-0">
+
+    <!-- SIDEBAR -->
+    <app-professor-navbar activeItem="availability" />
+
+    <!-- MAIN -->
+    <main class="min-h-0 min-w-0 flex-1 overflow-hidden p-3 sm:p-4 lg:p-5 xl:p-6">
+      <div class="grid h-full min-h-0 grid-cols-1 gap-3 sm:gap-4 xl:grid-cols-[minmax(0,1fr)_232px]">
+
+        <!-- MAIN CONTENT -->
+        <div class="grid min-h-0 grid-rows-[auto_minmax(0,1fr)] gap-3 sm:gap-4">
+
+          <!-- PAGE HEADER -->
+          <section class="rounded-[8px] border-l-4 border-cyan-700 bg-white px-4 py-4 shadow-md sm:px-5 sm:py-5">
+            <h1 class="text-xl font-bold uppercase tracking-tight text-cyan-800 sm:text-2xl lg:text-3xl">
+              Gestão de disponibilidade
+            </h1>
+
+            <p class="mt-1 max-w-4xl text-[10px] font-semibold leading-relaxed text-slate-500 sm:text-xs">
+              Defina seus horários de atuação para o próximo semestre letivo.
+              Clique nos blocos para alternar entre disponível, negociável e
+              indisponível.
+            </p>
+          </section>
+
+          <!-- AVAILABILITY GRID -->
+          <section
+            class="flex min-h-0 flex-col overflow-hidden rounded-[8px] border-l-4 border-cyan-700 bg-white p-3 shadow-md sm:p-4 lg:p-5">
+
+            <!-- CONTROLS -->
+            <div class="flex shrink-0 flex-col gap-3">
+
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+
+                <!-- ACTIONS -->
+                <div class="flex flex-col gap-2 sm:flex-row">
+
+                  @if (isEditing()) {
+
+                  <!-- DISCARD -->
+                  <button type="button"
+                    class="flex h-9 w-full items-center justify-center gap-2 rounded-[8px] border-2 border-slate-300 bg-white px-4 text-[10px] font-bold uppercase tracking-wide text-slate-600 shadow-sm transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500 sm:w-auto"
+                    (click)="discardChanges()">
+                    Descartar
+                  </button>
+
+                  <!-- CONCLUDE -->
+                  <button type="button"
+                    class="flex h-9 w-full items-center justify-center gap-2 rounded-[8px] bg-cyan-800 px-4 text-[10px] font-bold uppercase tracking-wide text-white shadow-md transition hover:bg-cyan-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600 sm:w-auto"
+                    (click)="toggleEditing()">
+                    <svg lucideCheck [size]="17" [strokeWidth]="2" aria-hidden="true"></svg>
+
+                    Concluir
+                  </button>
+
+                  } @else {
+
+                  <!-- EDIT -->
+                  <button type="button"
+                    class="flex h-9 w-full items-center justify-center gap-2 rounded-[8px] bg-cyan-800 px-4 text-[10px] font-bold uppercase tracking-wide text-white shadow-md transition hover:bg-cyan-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600 sm:w-auto"
+                    (click)="toggleEditing()">
+                    <svg lucidePencil [size]="17" [strokeWidth]="2" aria-hidden="true"></svg>
+
+                    Editar
+                  </button>
+
+                  }
+
+                </div>
+
+                <!-- FILTERS -->
+                <div class="grid grid-cols-1 gap-2 sm:grid-cols-[140px_minmax(220px,280px)]">
+
+                  <!-- PERIOD -->
+                  <div class="relative">
+                    <select [ngModel]="selectedPeriod()" (ngModelChange)="selectedPeriod.set($event)"
+                      aria-label="Período"
+                      class="h-9 w-full appearance-none rounded-[8px] border-2 border-cyan-800 bg-white px-3 pr-9 text-[9px] font-bold uppercase text-cyan-800 outline-none transition hover:bg-slate-50 focus:ring-2 focus:ring-cyan-100">
+                      @for (
+                      period of periods;
+                      track period
+                      ) {
+                      <option [value]="period">
+                        {{ period }}
+                      </option>
+                      }
+                    </select>
+
+                    <svg lucideChevronDown [size]="17" [strokeWidth]="2.5" aria-hidden="true"
+                      class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-cyan-800"></svg>
+                  </div>
+
+                  <!-- UNIT -->
+                  <div class="relative">
+                    <select [ngModel]="selectedUnit()" (ngModelChange)="selectedUnit.set($event)" aria-label="Unidade"
+                      class="h-9 w-full appearance-none rounded-[8px] border-2 border-cyan-800 bg-white px-3 pr-9 text-[9px] font-bold uppercase text-cyan-800 outline-none transition hover:bg-slate-50 focus:ring-2 focus:ring-cyan-100">
+                      @for (
+                      unit of units;
+                      track unit
+                      ) {
+                      <option [value]="unit">
+                        {{ unit }}
+                      </option>
+                      }
+                    </select>
+
+                    <svg lucideChevronDown [size]="17" [strokeWidth]="2.5" aria-hidden="true"
+                      class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-cyan-800"></svg>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- LEGEND -->
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+
+                <div class="flex items-center gap-1.5">
+                  <span class="h-4 w-4 rounded-[4px] bg-slate-500"></span>
+
+                  <span class="text-[9px] font-bold uppercase text-slate-600">
+                    Disponível
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  <span class="h-4 w-4 rounded-[4px] bg-amber-600"></span>
+
+                  <span class="text-[9px] font-bold uppercase text-slate-600">
+                    Disponível com ressalva
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  <span class="h-4 w-4 rounded-[4px] border-2 border-slate-400 bg-white"></span>
+
+                  <span class="text-[9px] font-bold uppercase text-slate-600">
+                    Indisponível
+                  </span>
+                </div>
+
+                <span
+                  class="ml-auto rounded-[8px] border-2 border-slate-300 bg-white px-3 py-1.5 text-[9px] font-bold uppercase text-slate-500">
+                  {{ semester }}
+                </span>
+
+              </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="mt-3 min-h-0 flex-1 overflow-auto rounded-[8px] border-4 transition-all duration-200 sm:mt-4"
+              [class.border-slate-200]="!isEditing()" [class.border-cyan-500]="isEditing()" [class.ring-4]="isEditing()"
+              [class.ring-cyan-100]="isEditing()">
+              <table class="h-full min-w-[620px] w-full table-fixed border-separate border-spacing-1">
+                <thead>
+                  <tr class="h-14">
+
+                    <th scope="col"
+                      class="w-[82px] rounded-[8px] bg-slate-300 px-1 text-center text-[9px] font-bold text-slate-500 sm:w-[96px] sm:text-[10px]">
+                      Horário
+                    </th>
+
+                    @for (
+                    day of weekDays;
+                    track day
+                    ) {
+                    <th scope="col" class="rounded-[8px] bg-slate-300 text-[10px] font-bold text-slate-500 sm:text-xs">
+                      {{ day }}
+                    </th>
+                    }
+
+                  </tr>
+                </thead>
+
+                <tbody>
+                  @for (
+                  timeSlot of timeSlots;
+                  track timeSlot;
+                  let row = $index
+                  ) {
+
+                  <tr class="h-[30%]">
+
+                    <th scope="row"
+                      class="rounded-[8px] bg-slate-300 px-1 text-center text-[10px] font-bold text-slate-500 sm:text-xs">
+                      {{ timeSlot }}
+                    </th>
+
+                    @for (
+                    day of weekDays;
+                    track day
+                    ) {
+
+                    @let status = getStatus(
+                    day,
+                    row
+                    );
+
+                    <td class="p-0">
+                      <button type="button" [attr.title]="
+                              isEditing()
+                                ? 'Clique para alternar a disponibilidade'
+                                : 'Clique em Editar para alterar a disponibilidade'
+                            "
+                        class="flex h-full min-h-[64px] w-full items-center justify-center rounded-[8px] px-1.5 text-center text-[8px] font-bold transition sm:min-h-[76px] sm:px-2 sm:text-[9px]"
+                        [class.cursor-pointer]="isEditing()" [class.cursor-not-allowed]="!isEditing()"
+                        [class.bg-slate-500]="status === 'available'" [class.bg-amber-600]="status === 'negotiable'"
+                        [class.bg-white]="status === 'unavailable'" [class.text-white]="status !== 'unavailable'"
+                        [class.text-slate-500]="status === 'unavailable'"
+                        [class.hover:bg-slate-600]="isEditing() && status === 'available'"
+                        [class.hover:bg-amber-700]="isEditing() && status === 'negotiable'"
+                        [class.hover:bg-slate-50]="isEditing() && status === 'unavailable'" [disabled]="!isEditing()"
+                        (click)="toggleAvailability(day, row)">
+                        @switch (status) {
+
+                        @case ('available') {
+                        Disponível
+                        }
+
+                        @case ('negotiable') {
+                        Negociável
+                        }
+
+                        @default {
+                        Indisponível
+                        }
+
+                        }
+                      </button>
+                    </td>
+
+                    }
+
+                  </tr>
+
+                  }
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="grid min-h-0 grid-rows-[auto_minmax(0,1fr)_minmax(0,1fr)] gap-3 sm:gap-4">
+
+          <!-- DEADLINE -->
+          <section class="overflow-hidden rounded-[8px] bg-white shadow-md">
+            <header class="flex h-12 items-center bg-cyan-800 px-4 text-white">
+              <h2 class="text-sm font-bold uppercase tracking-tight">
+                Prazo de alteração
+              </h2>
+            </header>
+
+            <div class="flex items-center p-4">
+              <div
+                class="flex h-8 w-full items-center justify-between rounded-full bg-cyan-800 px-3 text-[9px] font-bold uppercase text-white">
+                <span>
+                  {{ deadline }}
+                </span>
+
+                <svg lucideCalendarDays [size]="16" [strokeWidth]="2" aria-hidden="true"></svg>
+              </div>
+            </div>
+          </section>
+
+          <!-- SUMMARY -->
+          <section class="min-h-0 overflow-hidden rounded-[8px] bg-white shadow-md">
+            <header class="flex h-12 items-center bg-cyan-800 px-4 text-white">
+              <h2 class="text-sm font-bold uppercase tracking-tight">
+                Resumo da grade
+              </h2>
+            </header>
+
+            <div class="flex h-full min-h-0 flex-col justify-between p-4">
+
+              <div>
+                <span class="text-[10px] text-slate-500">
+                  Total selecionado
+                </span>
+
+                <div class="mt-2 flex items-end gap-1">
+                  <span class="text-4xl font-bold tracking-tight text-cyan-800">
+                    {{ availableHours }}
+                  </span>
+
+                  <span class="mb-1 text-sm font-bold text-cyan-800">
+                    h
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 text-[10px] text-slate-500">
+                  Limite mensal
+                </div>
+
+                <div class="h-3 overflow-hidden rounded-full bg-slate-300">
+                  <div class="h-full w-[55%] rounded-full bg-cyan-800"></div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- WARNING -->
+          <section class="min-h-0 overflow-hidden rounded-[8px] bg-white shadow-md">
+            <header class="flex h-12 items-center bg-cyan-800 px-4 text-white">
+              <h2 class="text-sm font-bold uppercase tracking-tight">
+                Aviso!
+              </h2>
+            </header>
+
+            <div class="p-4 text-justify text-[11px] leading-[1.25] text-slate-500">
+              A atribuição de aulas seguirá rigorosamente os horários aqui
+              manifestados. Alterações posteriores não serão aprovadas.
+            </div>
+          </section>
+
+        </aside>
+      </div>
+    </main>
+  </div>
+</div>
