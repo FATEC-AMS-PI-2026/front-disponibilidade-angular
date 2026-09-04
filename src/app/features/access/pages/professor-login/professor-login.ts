@@ -46,7 +46,6 @@ export class ProfessorLogin {
 
     this.isSubmitting.set(true);
 
-    // Substituir posteriormente pela chamada à API.
     setTimeout(() => {
       this.isSubmitting.set(false);
       this.router.navigate(['/professor/profile']);
