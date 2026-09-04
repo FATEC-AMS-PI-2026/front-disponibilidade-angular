@@ -1,0 +1,200 @@
+<div class="h-dvh overflow-hidden bg-slate-200 text-slate-700">
+  <div class="flex h-full min-h-0">
+
+    <!-- SIDEBAR -->
+    <app-professor-navbar activeItem="perfil" (profileClick)="accessAsProfile()"
+      (availabilityClick)="accessAvailability()" (logoutClick)="logout()" />
+
+    <!-- MAIN -->
+    <main class="min-h-0 min-w-0 flex-1 overflow-hidden p-3 sm:p-4 lg:p-5 xl:p-6">
+      <div class="flex h-full min-h-0 flex-col gap-3 sm:gap-4">
+
+        <!-- PERFIL -->
+        <section
+          class="flex min-h-[96px] shrink-0 items-center justify-between gap-4 rounded-[8px] border-l-4 border-cyan-700 bg-white px-4 py-3 shadow-md sm:px-5">
+          <div class="flex min-w-0 items-center gap-3 sm:gap-4">
+            <!-- AVATAR -->
+            <div
+              class="flex h-16 w-16 shrink-0 items-center justify-center rounded-[8px] bg-slate-200 text-slate-500 sm:h-[76px] sm:w-[76px] lg:h-[86px] lg:w-[86px]">
+              <svg lucideUserRound [size]="54" [strokeWidth]="1.4" aria-hidden="true"
+                class="h-9 w-9 sm:h-11 sm:w-11 lg:h-[54px] lg:w-[54px]"></svg>
+            </div>
+
+            <!-- INFORMAÇÕES -->
+            <div class="flex min-w-0 flex-col gap-1">
+              <span class="text-[10px] font-bold uppercase tracking-wide text-slate-500 sm:text-xs">
+                Professor
+              </span>
+
+              <h1 class="truncate text-base font-bold uppercase tracking-tight text-cyan-800 sm:text-xl lg:text-2xl">
+                {{ professorName }}
+              </h1>
+            </div>
+          </div>
+
+          <!-- FATECS -->
+          <div class="hidden shrink-0 items-center gap-2 xl:flex">
+            <span class="rounded-full bg-cyan-800 px-3 py-1 text-[8px] font-bold uppercase text-white">
+              FATEC DOM AMAURY CASTANHO
+            </span>
+
+            <span class="rounded-full bg-cyan-800 px-3 py-1 text-[8px] font-bold uppercase text-white">
+              FATEC JOSÉ CRESPO GONZALES
+            </span>
+          </div>
+        </section>
+
+        <!-- CONTEÚDO -->
+        <div
+          class="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-[minmax(220px,0.28fr)_minmax(0,0.72fr)]">
+
+          <!-- COLUNA ESQUERDA -->
+          <div class="grid min-h-0 grid-rows-2 gap-3 sm:gap-4">
+
+            <!-- MATÉRIAS MINISTRADAS -->
+            <section class="min-h-0 overflow-hidden rounded-[8px] bg-white shadow-md">
+              <header class="flex h-10 shrink-0 items-center bg-cyan-800 px-4 text-white sm:h-12">
+                <h2 class="text-xs font-bold uppercase tracking-tight sm:text-sm lg:text-base">
+                  Matérias Ministradas
+                </h2>
+              </header>
+
+              <div class="min-h-0 overflow-hidden px-4 py-3 sm:px-5 sm:py-4">
+                <ul class="list-disc space-y-1 pl-4 text-[11px] leading-[1.3] text-slate-600 sm:text-xs lg:text-[13px]">
+                  @for (subject of subjects; track subject) {
+                  <li>
+                    {{ subject }}
+                  </li>
+                  }
+                </ul>
+              </div>
+            </section>
+
+            <!-- FILTROS -->
+            <section class="min-h-0 overflow-hidden rounded-[8px] bg-white shadow-md">
+              <header class="flex h-10 shrink-0 items-center bg-cyan-800 px-4 text-white sm:h-12">
+                <h2 class="text-xs font-bold uppercase tracking-tight sm:text-sm lg:text-base">
+                  Filtros
+                </h2>
+              </header>
+
+              <div class="flex min-h-0 flex-col gap-3 overflow-hidden px-4 py-3 sm:gap-4 sm:px-4 sm:py-4">
+
+                <!-- UNIDADE -->
+                <div class="flex flex-col gap-1.5 sm:gap-2">
+                  <label for="unit" class="text-xs font-bold text-cyan-800 sm:text-sm lg:text-base">
+                    Unidade
+                  </label>
+
+                  <div class="relative">
+                    <select id="unit" [(ngModel)]="selectedUnit"
+                      class="h-9 w-full appearance-none rounded-[8px] border-2 border-cyan-800 bg-white px-2.5 pr-9 text-[8px] font-bold uppercase text-cyan-800 outline-none transition hover:bg-slate-50 focus:ring-2 focus:ring-cyan-100 sm:h-10 sm:border-4 sm:px-3 sm:text-[9px]">
+                      @for (unit of units; track unit) {
+                      <option [value]="unit">
+                        {{ unit }}
+                      </option>
+                      }
+                    </select>
+
+                    <svg lucideChevronDown [size]="18" [strokeWidth]="2.5" aria-hidden="true"
+                      class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-cyan-800"></svg>
+                  </div>
+                </div>
+
+                <!-- ANO / SEMESTRE -->
+                <div class="flex flex-col gap-1.5 sm:gap-2">
+                  <label for="semester" class="text-xs font-bold text-cyan-800 sm:text-sm lg:text-base">
+                    Ano / Semestre
+                  </label>
+
+                  <div class="relative">
+                    <select id="semester" [(ngModel)]="selectedSemester"
+                      class="h-9 w-full appearance-none rounded-[8px] border-2 border-cyan-800 bg-white px-2.5 pr-9 text-[8px] font-bold uppercase text-cyan-800 outline-none transition hover:bg-slate-50 focus:ring-2 focus:ring-cyan-100 sm:h-10 sm:border-4 sm:px-3 sm:text-[9px]">
+                      @for (semester of semesters; track semester) {
+                      <option [value]="semester">
+                        {{ semester }}
+                      </option>
+                      }
+                    </select>
+
+                    <svg lucideChevronDown [size]="18" [strokeWidth]="2.5" aria-hidden="true"
+                      class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-cyan-800"></svg>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </div>
+
+          <!-- GRADE SEMANAL -->
+          <section
+            class="flex min-h-0 flex-col overflow-hidden rounded-[8px] border-l-4 border-cyan-700 bg-white p-3 shadow-md sm:p-4 lg:p-5">
+            <h2
+              class="mb-3 shrink-0 text-lg font-bold uppercase tracking-tight text-cyan-800 sm:mb-4 sm:text-xl lg:text-2xl">
+              Grade semanal de aulas
+            </h2>
+
+            <!-- TABELA -->
+            <div class="min-h-0 flex-1 overflow-auto rounded-[8px]">
+              <table class="h-full min-w-[620px] w-full table-fixed border-collapse">
+                <thead>
+                  <tr class="h-14">
+                    <th scope="col"
+                      class="w-[88px] bg-cyan-800 px-1 text-center text-[8px] font-bold text-white sm:text-[9px]">
+                      Horário
+                    </th>
+
+                    @for (day of weekDays; track day) {
+                    <th scope="col"
+                      class="border-l border-white/20 bg-cyan-800 text-[9px] font-bold text-white sm:text-[10px]">
+                      {{ day }}
+                    </th>
+                    }
+                  </tr>
+                </thead>
+
+                <tbody class="h-full">
+                  @for (
+                  timeSlot of timeSlots;
+                  track timeSlot;
+                  let row = $index
+                  ) {
+                  <tr>
+                    <!-- HORÁRIO -->
+                    <th scope="row"
+                      class="bg-slate-300 px-1 text-center text-[8px] font-bold text-slate-500 sm:text-[9px]">
+                      {{ timeSlot }}
+                    </th>
+
+                    <!-- DIAS -->
+                    @for (day of weekDays; track day) {
+                    @let schedule = getSchedule(day, row);
+
+                    <td class="relative border-l border-white/40 bg-slate-200 p-0">
+                      @if (schedule) {
+                      <div class="h-full border-b-4 border-cyan-800 bg-white p-1.5 sm:p-2">
+                        <span
+                          class="block text-[7px] font-bold uppercase leading-[1.15] text-slate-500 sm:text-[8px] lg:text-[9px]">
+                          {{ schedule.subject }}
+                          <br />
+                          - {{ schedule.room }}
+                        </span>
+                      </div>
+                      } @else {
+                      <span class="absolute left-2 top-1/2 -translate-y-1/2 text-[9px] text-slate-400">
+                        -
+                      </span>
+                      }
+                    </td>
+                    }
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
